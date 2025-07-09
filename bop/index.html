@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Balu Vadewale</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fffaf0;
+      color: #333;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: linear-gradient(to right, #fff8e1, #ffe4b5, #ffdbab);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #e95c0b;
+      letter-spacing: 1px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      position: relative;
+    }
+
+    nav .nav-link,
+    nav .dropdown-btn {
+      font-size: 1rem;
+      text-decoration: none;
+      color: #5a3b11;
+      font-weight: 500;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0.5rem 1rem;
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 110%;
+      left: 0;
+      background: #fff8e1;
+      min-width: 200px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      border-radius: 6px;
+      flex-direction: column;
+      z-index: 1000;
+    }
+
+    .dropdown-content a {
+      color: #5a3b11;
+      padding: 0.7rem 1rem;
+      font-size: 0.95rem;
+      text-decoration: none;
+      border-bottom: 1px solid #f5e8c3;
+      white-space: nowrap;
+    }
+
+    .dropdown-content a:last-child {
+      border-bottom: none;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #ffe8bb;
+    }
+
+    .dropdown.open .dropdown-content {
+      display: flex;
+    }
+
+    .hero {
+      background: linear-gradient(to bottom right, #ffedd5, #fff3cc, #fff8e0);
+      text-align: center;
+      padding: 4rem 1rem 3rem;
+    }
+
+    .hero img {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      margin-bottom: 2rem;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      color: #e95c0b;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      color: #5a3b11;
+      margin-bottom: 1.8rem;
+    }
+
+    .cta-button {
+      background-color: #e95c0b;
+      color: white;
+      border: none;
+      padding: 0.9rem 2rem;
+      font-size: 1rem;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s;
+      box-shadow: 0 4px 12px rgba(233, 92, 11, 0.3);
+    }
+
+    .cta-button:hover {
+      background-color: #cf4e04;
+      transform: translateY(-2px);
+    }
+
+    .menu-enhanced {
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+    }
+
+    .menu-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      padding: 3rem 2rem;
+      flex-wrap: wrap;
+      background: linear-gradient(to right, #ffedd5, #fff5e1);
+    }
+
+    .menu-row:nth-child(2) {
+      background: linear-gradient(to left, #ffe2bb, #fffae6);
+    }
+
+    .menu-row:nth-child(3) {
+      background: linear-gradient(to right, #ffdbab, #fff7de);
+    }
+
+    .menu-row.reverse {
+      flex-direction: row-reverse;
+    }
+
+    .menu-image img {
+      width: 320px;
+      height: auto;
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .menu-content {
+      flex: 1;
+      max-width: 600px;
+    }
+
+    .menu-content h3 {
+      font-size: 1.8rem;
+      color: #e95c0b;
+      margin-bottom: 0.5rem;
+    }
+
+    .menu-content p {
+      font-size: 1.1rem;
+      color: #5a3b11;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .menu-row,
+      .menu-row.reverse {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .menu-content {
+        max-width: 100%;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .cta-button {
+        padding: 0.6rem 1.4rem;
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">BALU VADEWALE</div>
+    <nav>
+      <div class="dropdown" id="storeDropdown">
+        <button class="dropdown-btn" onclick="toggleDropdown('storeDropdown')">Store</button>
+        <div class="dropdown-content">
+          <a href="#">Talegaon Station</a>
+        </div>
+      </div>
+
+      <a class="nav-link" href="https://www.google.com/maps/place/Balu+Wadewale/@18.737523,73.671978,17z" target="_blank">Store Location</a>
+
+      <div class="dropdown" id="contactDropdown">
+        <button class="dropdown-btn" onclick="toggleDropdown('contactDropdown')">Contact</button>
+        <div class="dropdown-content">
+          <a href="https://wa.me/919999999999" target="_blank">WhatsApp: +91 99999 99999</a>
+          <a href="https://www.instagram.com/balu_wadewale/" target="_blank">Instagram: balu_wadewale</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <img src="hero.png" alt="Hero Image" />
+    <h1>Vada Pav & Moong Bhaji</h1>
+    <p>Talegaon’s favorite street food</p>
+    <a href="https://www.zomato.com/pune/balu-wadewale-2-talegaon" target="_blank">
+      <button class="cta-button">Place Order</button>
+    </a>
+  </section>
+
+  <section class="menu-enhanced">
+    <div class="menu-row">
+      <div class="menu-image">
+        <img src="image.png" alt="Vadapav" />
+      </div>
+      <div class="menu-content">
+        <h3>Vadapav</h3>
+        <p>Spicy batata vada stuffed inside a soft pav, served with chutneys and fried green chili. A Mumbai classic loved by Talegaon!</p>
+      </div>
+    </div>
+
+    <div class="menu-row reverse">
+      <div class="menu-image">
+        <img src="samosa.png" alt="Samosa" />
+      </div>
+      <div class="menu-content">
+        <h3>Samosa</h3>
+        <p>Crispy triangular delight filled with mashed potato and flavorful spices. Perfect evening snack with chai!</p>
+      </div>
+    </div>
+
+    <div class="menu-row">
+      <div class="menu-image">
+        <img src="moong-bhaji.png" alt="Moong Bhaji" />
+      </div>
+      <div class="menu-content">
+        <h3>Moong Bhaji</h3>
+        <p>Deep-fried crunchy moong dal fritters, golden and crisp, served hot with chutney — a local favorite.</p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function toggleDropdown(id) {
+      const dropdown = document.getElementById(id);
+      const isOpen = dropdown.classList.contains('open');
+      document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('open'));
+      if (!isOpen) dropdown.classList.add('open');
+    }
+
+    document.addEventListener('click', function (event) {
+      if (!event.target.closest('.dropdown')) {
+        document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('open'));
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,190 @@
+/* 🔹 Reset & Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* 🔹 BODY */
+body {
+    background-color: #f3f4f6;
+}
+
+/* 🔹 NAVBAR */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff6200;
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 30px;
+    margin-right: 10px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links li {
+    display: inline;
+    position: relative;
+}
+
+.nav-links a {
+    color: black;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ff6200;
+}
+
+/* 🔹 HERO SECTION */
+.hero {
+    position: relative;
+    height: 60vh;
+    background: url('images/destination-hero.jpg') no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    color: white;
+}
+
+.hero-content h1 {
+    font-size: 42px;
+    font-weight: bold;
+}
+
+/* 🔹 DESTINATION CARDS */
+.destination-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    padding: 50px;
+}
+
+/* 🔹 INDIVIDUAL DESTINATION BOX */
+.box {
+    width: 320px;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.box img {
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+/* 🔹 Card Hover Effect */
+.box:hover {
+    transform: scale(1.05);
+}
+
+.box img:hover {
+    filter: brightness(80%);
+}
+
+/* 🔹 PRICE & DETAILS */
+.box h3 {
+    color: #ff6200;
+    font-size: 20px;
+    margin-top: 15px;
+}
+
+.box p {
+    font-size: 14px;
+    color: #555;
+}
+
+/* 🔹 LOCATION BUTTON */
+.location-btn {
+    padding: 10px;
+    background: linear-gradient(90deg, #ff6200, #ff9b42);
+    color: white;
+    border: none;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    display: block;
+    margin: 10px auto 0;
+}
+
+.location-btn:hover {
+    background: linear-gradient(90deg, #ff9b42, #ff6200);
+    transform: scale(1.1);
+}
+
+/* 🔹 FOOTER */
+footer {
+    background: #222;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    margin-top: 30px;
+}
+
+/* 🔹 RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+    .hero {
+        height: auto;
+        padding: 30px;
+    }
+
+    .destination-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .box {
+        width: 90%;
+    }
+}
